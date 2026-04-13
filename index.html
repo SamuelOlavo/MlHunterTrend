@@ -77,10 +77,12 @@
         </p>
 
         <div class="max-w-lg mx-auto bg-[#1a1a1a] p-2 rounded-2xl border border-white/10">
-            <form name="contact" method="POST" data-netlify="true" class="flex flex-col md:flex-row gap-4">
+            <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+                class="flex flex-col md:flex-row gap-4">
                 <input type="hidden" name="form-name" value="contact">
                 <input type="hidden" name="origem" value="Landing Page Principal">
                 <input type="hidden" name="projeto" value="Trend Hunter Multi-Source">
+                <input type="hidden" name="bot-field" class="hidden">
                 <input type="email" name="email" id="userEmail" required placeholder="Seu melhor email"
                     class="bg-transparent w-full px-4 py-3 outline-none text-white">
                 <button type="submit" id="btnEnviar"
@@ -88,27 +90,72 @@
                     Começar Grátis
                 </button>
             </form>
-            <div id="feedback" class="hidden text-xs mt-3 text-[#d4ff3f]">E-mail cadastrado com sucesso!</div>
+            <div id="feedback" class="hidden mt-3 p-3 bg-[#d4ff3f]/10 border border-[#d4ff3f]/30 rounded-lg">
+                <div class="flex items-center gap-2 text-[#d4ff3f]">
+                    <i class="fa-solid fa-check-circle"></i>
+                    <span class="text-sm font-medium">E-mail cadastrado com sucesso!</span>
+                </div>
+            </div>
+            <div id="error" class="hidden mt-3 p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
+                <div class="flex items-center gap-2 text-red-400">
+                    <i class="fa-solid fa-exclamation-circle"></i>
+                    <span class="text-sm">Erro ao enviar. Tente novamente.</span>
+                </div>
+            </div>
         </div>
 
         <script>
-            // Netlify Forms - não precisa de JavaScript customizado
-            // O formulário funciona automaticamente com data-netlify="true"
+            // Intercepta o envio do formulário para evitar redirecionamento
+            document.querySelector('form[name="contact"]').addEventListener('submit', async function (e) {
+                e.preventDefault(); // Impede o comportamento padrão
 
-            // Apenas para mostrar feedback visual
-            document.querySelector('form[name="contact"]').addEventListener('submit', function (e) {
                 const btn = document.getElementById('btnEnviar');
                 const feedback = document.getElementById('feedback');
+                const error = document.getElementById('error');
+                const email = document.getElementById('userEmail');
 
+                // Reset estados
+                feedback.classList.add('hidden');
+                error.classList.add('hidden');
+
+                // Estado de loading
                 btn.innerText = 'Enviando...';
                 btn.disabled = true;
 
-                // Netlify vai redirecionar ou mostrar sucesso automaticamente
-                setTimeout(() => {
-                    feedback.classList.remove('hidden');
-                    btn.innerText = 'Enviado!';
-                    document.getElementById('userEmail').value = '';
-                }, 1000);
+                const formData = new FormData(this);
+
+                try {
+                    // Envia via fetch para Netlify Forms
+                    const response = await fetch('/', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: new URLSearchParams(formData).toString()
+                    });
+
+                    if (response.ok) {
+                        // Sucesso
+                        feedback.classList.remove('hidden');
+                        btn.innerText = 'Começar Grátis';
+                        email.value = '';
+
+                        // Limpa o formulário
+                        this.reset();
+
+                        // Opcional: redireciona após 3 segundos
+                        setTimeout(() => {
+                            feedback.classList.add('hidden');
+                        }, 5000);
+                    } else {
+                        throw new Error('Falha no envio');
+                    }
+                } catch (err) {
+                    // Erro
+                    error.classList.remove('hidden');
+                    btn.innerText = 'Começar Grátis';
+                    console.error('Erro:', err);
+                } finally {
+                    btn.disabled = false;
+                }
             });
         </script>
 
