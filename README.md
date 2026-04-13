@@ -1,14 +1,14 @@
-# 🚀 ML Trend Hunter
+# 🚀 Trend Hunter
 
 **Sistema Inteligente de Monitoramento de Tendências do E-commerce Brasileiro**
 
 Uma plataforma completa que automatiza a coleta e análise de dados dos maiores marketplaces do Brasil, fornecendo insights valiosos sobre produtos em alta para vendedores e empreendedores.
 
-## 📊 Visão Geral
+## Visão Geral
 
-O ML Trend Hunter é uma solução robusta que combina **web scraping automatizado**, **processamento de dados** e **email marketing** para criar um radar de oportunidades de negócio em tempo real.
+O Trend Hunter é uma solução robusta que combina **web scraping automatizado**, **processamento de dados** e **email marketing** para criar um radar de oportunidades de negócio em tempo real.
 
-### 🎯 Problema Resolvido
+### Problema Resolvido
 - **Falta de dados**: Vendedores não sabem o que está vendendo bem
 - **Análise manual**: Processo demorado e propenso a erros
 - **Oportunidades perdidas**: Produtos em alta não são identificados a tempo

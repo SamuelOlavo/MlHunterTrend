@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plano - ML Trend Hunter</title>
+    <title>Trend Hunter</title>
     <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23d4ff3f'/%3E%3Cstop offset='100%25' style='stop-color:%23b8e600'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23grad)'/%3E%3Cg transform='translate(6,6)'%3E%3Crect x='2' y='2' width='16' height='16' rx='3' fill='%23000' opacity='0.9'/%3E%3Crect x='4' y='6' width='12' height='1.5' fill='%23d4ff3f'/%3E%3Crect x='4' y='9' width='12' height='1.5' fill='%23d4ff3f'/%3E%3Crect x='4' y='12' width='9' height='1.5' fill='%23d4ff3f'/%3E%3Cpath d='M13 13l2.5-2.5 2.5 2.5-2.5 2.5-2.5-2.5z' fill='%23d4ff3f'/%3E%3C/g%3E%3C/svg%3E">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -25,8 +25,8 @@
                 </svg>
             </div>
             <div class="flex items-baseline gap-1">
-                <span class="font-bold text-2xl text-white">ML</span>
-                <span class="font-light text-2xl text-[#d4ff3f]">Trend Hunter</span>
+                <span class="font-bold text-2xl text-white">Trend</span>
+                <span class="font-bold text-2xl text-[#d4ff3f]"> Hunter</span>
             </div>
         </div>
 
@@ -61,9 +61,33 @@
     <main class="max-w-4xl mx-auto px-6 py-20">
         <!-- Header -->
         <div class="text-center mb-16">
-            <h1 class="text-5xl font-bold mb-4">Nosso <span class="text-[#d4ff3f]">Plano Único</span></h1>
-            <p class="text-gray-400 text-lg">Tudo que você precisa para encontrar os melhores produtos do Mercado Livre
+            <div
+                class="inline-block bg-[#1a1a1a] border border-[#d4ff3f]/30 text-[#d4ff3f] px-4 py-1 rounded-full text-sm mb-6">
+                🚀 Acesso Multi-Source
+            </div>
+            <h1 class="text-5xl font-bold mb-4">Acesso <span class="text-[#d4ff3f]">Completo</span> aos Maiores
+                Marketplaces</h1>
+            <p class="text-gray-400 text-lg max-w-3xl mx-auto">
+                Monitore <strong>simultaneamente</strong> o Mercado Livre e Amazon, compare preços em tempo real e
+                descubra oportunidades que seus concorrentes ainda não viram. Dados atualizados diariamente.
             </p>
+
+            <!-- Marketplace Badges -->
+            <div class="flex justify-center items-center gap-6 mt-8">
+                <div class="bg-[#1a1a1a] border border-white/10 px-6 py-3 rounded-xl flex items-center gap-3">
+                    <div class="w-8 h-8 bg-[#ffe600] rounded-lg flex items-center justify-center">
+                        <span class="text-black font-bold text-xs">ML</span>
+                    </div>
+                    <span class="text-white font-medium">Mercado Livre</span>
+                </div>
+                <div class="text-[#d4ff3f] text-2xl font-bold">+</div>
+                <div class="bg-[#1a1a1a] border border-white/10 px-6 py-3 rounded-xl flex items-center gap-3">
+                    <div class="w-8 h-8 bg-[#ff9500] rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-xs">AMZ</span>
+                    </div>
+                    <span class="text-white font-medium">Amazon</span>
+                </div>
+            </div>
         </div>
 
         <!-- Pricing Card -->
@@ -85,9 +109,9 @@
                         <i class="fa-solid fa-envelope text-[#d4ff3f] text-xl"></i>
                     </div>
                     <div>
-                        <h3 class="font-bold text-lg mb-1">Lista Diária por Email</h3>
+                        <h3 class="font-bold text-lg mb-1">Lista Multi-Source por Email</h3>
                         <p class="text-gray-400">Receba todos os dias, direto no seu email, os produtos com maior volume
-                            de vendas e crescimento no Mercado Livre.</p>
+                            de vendas no Mercado Livre e Amazon</p>
                     </div>
                 </div>
 
@@ -107,9 +131,9 @@
                         <i class="fa-solid fa-filter text-[#d4ff3f] text-xl"></i>
                     </div>
                     <div>
-                        <h3 class="font-bold text-lg mb-1">Filtros Inteligentes</h3>
-                        <p class="text-gray-400">Filtre produtos por categoria, faixa de preço, crescimento, margem de
-                            lucro e muito mais.</p>
+                        <h3 class="font-bold text-lg mb-1">Filtros Multi-Source</h3>
+                        <p class="text-gray-400">Filtre produtos por marketplace, categoria, compare preços entre ML e
+                            Amazon, e muito mais.</p>
                     </div>
                 </div>
 
@@ -118,9 +142,9 @@
                         <i class="fa-solid fa-bolt text-[#d4ff3f] text-xl"></i>
                     </div>
                     <div>
-                        <h3 class="font-bold text-lg mb-1">Atualizações em Tempo Real</h3>
-                        <p class="text-gray-400">Dados atualizados constantemente para garantir que você sempre tenha as
-                            informações mais recentes.</p>
+                        <h3 class="font-bold text-lg mb-1">Comparação de Preços</h3>
+                        <p class="text-gray-400">Compare automaticamente os mesmos produtos entre Mercado Livre e Amazon
+                            para encontrar sempre o melhor preço.</p>
                     </div>
                 </div>
 
@@ -136,23 +160,26 @@
                 </div>
             </div>
 
-            <!-- CTA Form -->
+            <!-- CTA WhatsApp -->
             <div class="bg-[#0f0f0f] p-6 rounded-xl">
-                <h3 class="text-xl font-bold mb-4 text-center">Comece Agora</h3>
-                <form id="planoForm" class="space-y-4">
-                    <div>
-                        <label class="block text-sm text-gray-400 mb-2">Seu Melhor Email</label>
-                        <input type="email" id="planoEmail" required placeholder="seu@email.com"
-                            class="w-full bg-transparent border border-white/20 rounded-lg px-4 py-3 text-white outline-none focus:border-[#d4ff3f] transition">
-                    </div>
+                <h3 class="text-xl font-bold mb-4 text-center">Fale Conosco pelo WhatsApp</h3>
+                <p class="text-gray-400 text-center mb-6">
+                    Tenha acesso imediato aos dados multi-source. Fale diretamente com nosso time e
+                    comece a monitorar Mercado Livre e Amazon hoje mesmo!
+                </p>
 
-                    <button type="submit"
-                        class="w-full bg-[#d4ff3f] text-black py-3 rounded-xl font-bold hover:bg-white transition">
-                        <i class="fa-solid fa-rocket mr-2"></i>Quero Receber a Lista Diária
-                    </button>
-                </form>
-                <div id="planoFeedback" class="hidden text-sm mt-3 text-[#d4ff3f] text-center">
-                    Cadastro realizado! Você receberá um email com os próximos passos.
+                <a href="https://wa.me/5531993101769?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Plano%20Prime%20do%20Trend%20Hunter%21"
+                    target="_blank"
+                    class="flex items-center justify-center gap-3 w-full bg-[#25D366] text-white py-4 rounded-xl font-bold hover:bg-[#128C7E] transition transform hover:scale-105">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                    <span>Tenho Interesse no Plano Multi-Source</span>
+                </a>
+
+                <div class="mt-6 text-center">
+                    <p class="text-xs text-gray-500">
+                        <i class="fas fa-bolt text-[#d4ff3f] mr-1"></i>
+                        Resposta em até 5 minutos • Suporte dedicado
+                    </p>
                 </div>
             </div>
         </div>
@@ -186,7 +213,7 @@
                 <div class="border-b border-white/10 pb-4">
                     <h3 class="font-bold mb-2">Como funciona a lista diária?</h3>
                     <p class="text-gray-400 text-sm">Todos os dias você recebe um email com os produtos que estão em
-                        alta no Mercado Livre, incluindo preço, volume de vendas e margem de lucro estimada.</p>
+                        alta no Mercado Livre e na Amazon, incluindo preço, ranking de vendas com sua categoria.</p>
                 </div>
 
                 <!-- <div class="border-b border-white/10 pb-4">
@@ -196,7 +223,7 @@
                 </div> -->
 
                 <div class="border-b border-white/10 pb-4">
-                    <h3 class="font-bold mb-2">Os dados são em tempo real?</h3>
+                    <h3 class="font-bold mb-2">Os dados são atualizados?</h3>
                     <p class="text-gray-400 text-sm">Sim! Nossos sistemas monitoram o Mercado Livre 24/7 para garantir
                         que você sempre tenha as informações mais atualizadas.</p>
                 </div>
@@ -214,8 +241,8 @@
     <footer class="bg-[#121212] border-t border-white/5 mt-20">
         <div class="max-w-7xl mx-auto px-6 py-12 text-center">
             <div class="flex items-baseline gap-1 mb-2 justify-center">
-                <span class="font-bold text-xl text-white">ML</span>
-                <span class="font-light text-xl text-[#d4ff3f]">Trend Hunter</span>
+                <span class="font-bold text-2xl text-white">Trend</span>
+                <span class="font-bold text-2xl text-[#d4ff3f]"> Hunter</span>
             </div>
             <p class="text-sm text-gray-500">
                 &copy; 2026 ML Trend Hunter. Todos os direitos reservados.
