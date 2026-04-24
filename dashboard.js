@@ -62,19 +62,42 @@ async function loadData() {
     );
     console.log(" Total real na tabela:", result.total || "desconhecido");
 
-    if (
-      Array.isArray(data) &&
-      data.every((item) => item.data && item.data.length === 10)
-    ) {
-      currentData = data;
-      updateDashboard(currentData);
-      updateTable(currentData);
+    if (Array.isArray(data)) {
+      // Verificar se os dados têm a estrutura esperada
+      if (data.length === 0) {
+        console.log(" Nenhum produto encontrado com os filtros atuais");
+        // Não mostrar erro, apenas continuar com array vazio
+        currentData = data;
+        updateDashboard(currentData);
+        updateTable(currentData);
+        return;
+      }
 
-      // Mostrar estatísticas reais
-      if (result.total && result.total > 100) {
+      // Verificar estrutura dos dados (adaptar para dados reais)
+      const hasValidStructure = data.every(
+        (item) =>
+          item &&
+          typeof item === "object" &&
+          (item.data || item.name || item.title), // Flexível para diferentes estruturas
+      );
+
+      if (hasValidStructure) {
+        currentData = data;
+        updateDashboard(currentData);
+        updateTable(currentData);
+
+        // Mostrar estatísticas reais
+        if (result.total && result.total > 100) {
+          console.log(
+            ` Análise completa: ${data.length} produtos carregados de ${result.total} totais`,
+          );
+        }
+      } else {
+        console.error(" Estrutura de dados inválida:", data[0]);
         console.log(
-          ` Análise completa: ${data.length} produtos carregados de ${result.total} totais`,
+          " Estrutura esperada: objeto com propriedade 'data', 'name' ou 'title'",
         );
+        showError("Estrutura de dados inesperada");
       }
     } else {
       console.error(" Dados inválidos recebidos:", result);
