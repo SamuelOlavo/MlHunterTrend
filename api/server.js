@@ -564,7 +564,7 @@ app.get("/api/test-permissions", async (req, res) => {
     console.log("1. Testando SELECT básico em products_trend...");
     const { data: basicData, error: basicError } = await supabase
       .from("products_trend")
-      .select("count", { count: "exact", head: true });
+      .select("*", { count: "exact", head: true });
 
     if (basicError) {
       console.error("Erro no SELECT básico:", basicError);
@@ -581,7 +581,7 @@ app.get("/api/test-permissions", async (req, res) => {
     console.log("2. Testando SELECT em vw_oportunidades_trend...");
     const { data: viewData, error: viewError } = await supabase
       .from("vw_oportunidades_trend")
-      .select("count", { count: "exact", head: true });
+      .select("*", { count: "exact", head: true });
 
     if (viewError) {
       console.error("Erro na view:", viewError);
@@ -601,6 +601,13 @@ app.get("/api/test-permissions", async (req, res) => {
       .select("id, data, platform, scraped_at")
       .limit(3);
 
+    // Teste adicional: verificar se tabela existe com estrutura correta
+    console.log("4. Verificando estrutura da tabela...");
+    const { data: structureData, error: structureError } = await supabase
+      .from("products_trend")
+      .select("*")
+      .limit(1);
+
     if (realError) {
       console.error("Erro nos dados reais:", realError);
       return res.status(500).json({
@@ -611,6 +618,16 @@ app.get("/api/test-permissions", async (req, res) => {
 
     console.log("✅ Dados reais:", realData);
 
+    if (structureError) {
+      console.error("Erro na estrutura:", structureError);
+      return res.status(500).json({
+        error: "Erro na estrutura da tabela",
+        details: structureError,
+      });
+    }
+
+    console.log("✅ Estrutura da tabela:", structureData);
+
     res.json({
       status: "OK",
       permissions: {
@@ -618,10 +635,11 @@ app.get("/api/test-permissions", async (req, res) => {
         vw_oportunidades_trend: "✅ Acesso permitido",
       },
       counts: {
-        products_trend: basicData,
-        vw_oportunidades_trend: viewData,
+        products_trend_count: basicData,
+        vw_oportunidades_trend_count: viewData,
       },
       sample_data: realData,
+      table_structure: structureData,
       message: "Todas as permissões estão funcionando",
     });
   } catch (error) {
