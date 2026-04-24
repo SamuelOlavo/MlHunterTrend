@@ -1,7 +1,7 @@
 // JavaScript do Dashboard Trend Hunter
 
 // Configuração API Backend
-const API_BASE_URL = "http://localhost:3001";
+const API_BASE_URL = window.location.origin;
 
 // Variáveis globais
 let currentData = [];
