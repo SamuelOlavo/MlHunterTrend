@@ -287,7 +287,7 @@ app.get("/api/stats", async (req, res) => {
         platform: "Shopee",
         name: item.name,
         category: item.category,
-        ranking: null,
+        ranking: (item.sales || 0) * (item.rating_star || 0),
         price_current: item.price,
         image_url: item.image_url,
         url: item.url_product,
@@ -711,7 +711,7 @@ app.get("/api/analytics-full", async (req, res) => {
           platform: "Shopee",
           name: item.name,
           category: item.category,
-          ranking: null, // Shopee não tem ranking direto, será calculado
+          ranking: (item.sales || 0) * (item.rating_star || 0), // Usar ranking_score como ranking
           price_current: item.price,
           image_url: item.image_url,
           url: item.url_product,
@@ -740,7 +740,7 @@ app.get("/api/analytics-full", async (req, res) => {
         platform: "Shopee",
         name: item.name,
         category: item.category,
-        ranking: null,
+        ranking: (item.sales || 0) * (item.rating_star || 0),
         price_current: item.price,
         image_url: item.image_url,
         url: item.url_product,

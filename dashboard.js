@@ -798,6 +798,9 @@ function setupEventListeners() {
   document.getElementById("platformChartAZ").addEventListener("click", () => {
     updateChartFilter("platform", "amazon", "platformChart");
   });
+  document.getElementById("platformChartSH").addEventListener("click", () => {
+    updateChartFilter("platform", "shopee", "platformChart");
+  });
 
   // Filtros dos Gráficos - Categoria
   document
